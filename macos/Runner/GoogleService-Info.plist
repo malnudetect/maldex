@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>134141366024-hqr3guphtujh2k3sdj4p1h9dt1hbqmcn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.134141366024-hqr3guphtujh2k3sdj4p1h9dt1hbqmcn</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>134141366024-osa3e16ih5tlr52fnf6d96i0u65mntg1.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyApkCPXisM5sUZxuNshjF8Pe6E3ER7y4fs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>134141366024</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.malnudetect.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>malnudetect</string>
+	<key>STORAGE_BUCKET</key>
+	<string>malnudetect.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:134141366024:ios:48e3715ebe7dd5a8ad66bd</string>
+</dict>
+</plist>
