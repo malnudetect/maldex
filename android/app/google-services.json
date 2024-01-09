@@ -12,20 +12,7 @@
           "package_name": "com.example.malnudetect"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "134141366024-osa3e16ih5tlr52fnf6d96i0u65mntg1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.malnudetect",
-            "certificate_hash": "10ffc00a2c9965b3e3c4a1534e10741fa4d7f816"
-          }
-        },
-        {
-          "client_id": "134141366024-3qtoq24p5sb250csjdt5m8p8gpp68e8n.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyCj4h6HzTwETjtzq7tZgAGcPvcqdlcoaSE"
@@ -33,19 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "134141366024-3qtoq24p5sb250csjdt5m8p8gpp68e8n.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "134141366024-ek9u9ktnvnu4rebg3hfoud0hkmasbkok.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.malnudetect"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
