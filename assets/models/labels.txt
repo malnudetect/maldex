@@ -1,2 +1,2 @@
-0 Malnourished
-1 Healthy
+Healthy
+Malnourished
