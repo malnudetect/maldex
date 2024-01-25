@@ -1,0 +1,6 @@
+username: malnudetect
+email: malnudetect@gmail.com
+password: malnudetect##2001
+
+
+
