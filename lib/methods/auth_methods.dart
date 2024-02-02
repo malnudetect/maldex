@@ -16,6 +16,7 @@ class AuthMethods {
     required String name,
     required String email,
     required String password,
+    required String phoneContact,
     required Uint8List file,
   }) async {
     String res = "Some error Occurred";
@@ -30,12 +31,12 @@ class AuthMethods {
             .uploadImageToStorage('profilePics', file, false);
 
         model.UserModel user = model.UserModel(
-            email: email,
-            uid: credentials.user!.uid,
-            photoUrl: photoUrl,
-            username: name,
-            role: "client",
-            accountType: AccountTypeEnum.Normal);
+          email: email,
+          uid: credentials.user!.uid,
+          phoneContact: phoneContact,
+          photoUrl: photoUrl,
+          username: name,
+        );
 
         //storing user to database
         await _firestore

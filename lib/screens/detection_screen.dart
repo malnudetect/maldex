@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:malnudetect/constants/global_variables.dart';
+import 'package:malnudetect/methods/auth_methods.dart';
 import 'package:malnudetect/screens/numerical_data_section.dart';
 import 'package:tflite/tflite.dart';
 
@@ -56,26 +58,6 @@ class _DetectionScreenState extends State<DetectionScreen> {
       imageSelect = true;
     });
   }
-
-  // Future imageClassification1(File image) async {
-  //   final List? recognitions = await Tflite.runModelOnImage(
-  //     path: image.path,
-  //     numResults: 6,
-  //     threshold: 0.05,
-  //     imageMean: 127.5,
-  //     imageStd: 127.5,
-  //   );
-
-  //   List<Result> results = (recognitions as List)
-  //       .map((result) => Result(result["label"], result["confidence"] * 100))
-  //       .toList();
-
-  //   setState(() {
-  //     _results = results;
-  //     _image = image;
-  //     imageSelect = true;
-  //   });
-  // }
 
   Future pickImage() async {
     final ImagePicker _picker = ImagePicker();
@@ -135,33 +117,6 @@ class _DetectionScreenState extends State<DetectionScreen> {
         );
       },
     );
-
-    /////+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++///////////////////////////////////////
-
-    // showModalBottomSheet(
-    //   context: context,
-    //   builder: (context) {
-    //     return Column(
-    //       mainAxisSize: MainAxisSize.min,
-    //       children: [
-    //         ListTile(
-    //           leading: const Icon(Icons.photo_camera),
-    //           title: const Text('Take Picture'),
-    //           onTap: () {
-    //             _getImageFromCamera();
-    //           },
-    //         ),
-    //         ListTile(
-    //           leading: const Icon(Icons.photo_library),
-    //           title: const Text('Upload Picture'),
-    //           onTap: () {
-    //             pickImage();
-    //           },
-    //         ),
-    //       ],
-    //     );
-    //   },
-    // );
   }
 
   @override
@@ -177,6 +132,33 @@ class _DetectionScreenState extends State<DetectionScreen> {
           ),
         ),
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: GlobalVariables.primaryColor,
+              ),
+              child: Center(child: Text('Some Contents')),
+            ),
+            ListTile(
+              title: const Text('Sign Out'),
+              onTap: () {
+                AuthMethods().signOut();
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: ListView(
         children: [

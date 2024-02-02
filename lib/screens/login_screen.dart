@@ -8,6 +8,7 @@ import 'package:malnudetect/common/loading.dart';
 import 'package:malnudetect/common/space.dart';
 import 'package:malnudetect/firebase_options.dart';
 import 'package:malnudetect/methods/auth_methods.dart';
+import 'package:malnudetect/screens/bottom_nav_screen.dart';
 import 'package:malnudetect/screens/forgot_password_screen.dart';
 import 'package:malnudetect/screens/signup_screen.dart';
 import 'package:malnudetect/screens/verification.dart';
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => const Verification(),
+            builder: (_) => const BottomNavScreen(),
           ),
         );
       } else {
@@ -102,10 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Column(
                                 children: [
                                   const Space(),
-                                  // const Logo(),
                                   Image(
                                     image: const AssetImage(
-                                      "assets/logo/goldenq.png",
+                                      "assets/logo/logo.png",
                                     ),
                                     // height: MediaQuery.of(context).size.height * 0.2,
                                     width:

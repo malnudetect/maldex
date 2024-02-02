@@ -78,11 +78,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             });
       }
 
-      if (_image != null) {
+      if (_image != null && selectedcountry != null) {
         await AuthMethods().signUpUser(
           name: nameController.text.trim(),
           email: emailController.text.trim(),
-          password: passwordController.text,
+          phoneContact:
+              "+${selectedcountry!.phoneCode}${phoneController.text.trim()}",
+          password: passwordController.text.trim(),
           file: _image!,
         );
 
@@ -92,7 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
       } else {
         Fluttertoast.showToast(
-          msg: "Please provide your image",
+          msg: "Image  and Country are required.",
           gravity: ToastGravity.CENTER,
           backgroundColor: Colors.red[800],
         );
@@ -114,6 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
     nameController.dispose();
     emailController.dispose();
+    phoneController.dispose();
     passwordController.dispose();
     secondPasswordController.dispose();
   }
@@ -150,13 +153,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Column(
                           children: [
                             // const Logo(),
-                            Image(
-                              image: const AssetImage(
-                                "assets/logo/logo.png",
-                              ),
-                              // height: MediaQuery.of(context).size.height * 0.2,
-                              width: MediaQuery.of(context).size.width * 0.5,
-                            ),
+                            // Image(
+                            //   image: const AssetImage(
+                            //     "assets/logo/logo.png",
+                            //   ),
+                            //   // height: MediaQuery.of(context).size.height * 0.2,
+                            //   width: MediaQuery.of(context).size.width * 0.5,
+                            // ),
                             const Space(),
                             Stack(
                               children: [
@@ -228,12 +231,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           )
-                                        : const Text("+256")),
+                                        : const Text("+333")),
                                 const SizedBox(width: 20),
                                 SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 1.5,
                                     child: TextField(
+                                      controller: phoneController,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(
                                               borderRadius:

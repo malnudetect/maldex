@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:malnudetect/models/user.dart';
+import 'package:malnudetect/screens/chat_screen.dart';
 import 'package:malnudetect/screens/login_screen.dart';
+import 'package:malnudetect/screens/search_users_screen.dart';
 import 'package:malnudetect/screens/signup_screen.dart';
 
 Route<dynamic> genarateRoutes(RouteSettings routeSettings) {
@@ -9,6 +12,16 @@ Route<dynamic> genarateRoutes(RouteSettings routeSettings) {
 
     case LoginScreen.routeName:
       return MaterialPageRoute(builder: (_) => const LoginScreen());
+
+    case ChatScreen.routeName:
+      var arguments = routeSettings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(
+          builder: (_) => ChatScreen(
+                receiver: arguments,
+              ));
+
+    case UserSearchScreen.routeName:
+      return MaterialPageRoute(builder: (_) => UserSearchScreen());
 
     default:
       return MaterialPageRoute(

@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:malnudetect/common/loading.dart';
 import 'package:malnudetect/screens/home_screen.dart';
-import 'package:path/path.dart';
 
 class Verification extends StatefulWidget {
   static String? userRole;
@@ -66,22 +65,5 @@ class _VerificationState extends State<Verification> {
         }
       },
     );
-
-    // switch (Verification.userRole) {
-    //   case "admin":
-    //     return const CounterScreen();
-    //   case "client":
-    //     return const CustomerFirstScreen();
-    //   default:
-    //     return const SizedBox(
-    //       height: 300,
-    //       child: Text("Unknown user "),
-    //     );
-    // }
-    // if (Verification.userRole == "admin") {
-    //   return const CounterScreen();
-    // } else {
-    //   return const CustomerFirstScreen();
-    // }
   }
 }

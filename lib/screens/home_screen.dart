@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:malnudetect/Chat/chat_screen.dart';
+import 'package:malnudetect/Chat/screens/chat_section_screen.dart';
 import 'package:malnudetect/screens/detection_screen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     const DetectionScreen(),
-    const ChatsScreen(),
+    const ChatSectionScreen(),
   ];
 
   @override

@@ -1,6 +1,6 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:malnudetect/Chat/chat_screen.dart';
+import 'package:malnudetect/Chat/screens/chat_section_screen.dart';
 import 'package:malnudetect/screens/detection_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   /// widget list
   final List<Widget> bottomBarPages = [
     const DetectionScreen(),
-    const ChatsScreen(),
+    const ChatSectionScreen(),
   ];
 
   @override
