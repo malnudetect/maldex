@@ -4,8 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:malnudetect/models/common_firebase_storage_repository.dart';
+import 'package:malnudetect/utils/common_firebase_storage_repository.dart';
 import 'package:malnudetect/models/email_contact.dart';
+import 'package:malnudetect/models/group.dart';
 import 'package:malnudetect/models/message.dart';
 import 'package:malnudetect/models/message_enum.dart';
 import 'package:malnudetect/models/message_reply_provider.dart';
@@ -57,18 +58,40 @@ class ChatRepository {
     });
   }
 
-  // Stream<List<Group>> getChatGroups() {
-  //   return firestore.collection('groups').snapshots().map((event) {
-  //     List<Group> groups = [];
-  //     for (var document in event.docs) {
-  //       var group = Group.fromMap(document.data());
-  //       if (group.membersUid.contains(auth.currentUser!.uid)) {
-  //         groups.add(group);
-  //       }
-  //     }
-  //     return groups;
-  //   });
-  // }
+  Stream<List<Group>> getChatGroups() {
+    // return firestore.collection('groups').snapshots().map((event) {
+    //   List<Group> groups = [];
+    //   for (var document in event.docs) {
+    //     var group = Group.fromMap(document.data());
+    //     if (group.membersUid.contains(auth.currentUser!.uid)) {
+    //       groups.add(group);
+    //     }
+
+    //   }
+    //   return groups;
+    // },);
+
+    return firestore.collection('groups').snapshots().map((event) {
+      List<Group> groups = [];
+      for (var element in event.docs) {
+        var gData = element.data();
+        var data = Group.fromMap(gData);
+
+        groups.add(
+          Group(
+            senderId: data.senderId,
+            name: data.name,
+            groupId: data.groupId,
+            lastMessage: data.lastMessage,
+            groupPic: data.groupPic,
+            membersUid: data.membersUid,
+            timeSent: data.timeSent,
+          ),
+        );
+      }
+      return groups;
+    });
+  }
 
   Stream<List<Message>> getChatStream(String recieverUserId) {
     return firestore

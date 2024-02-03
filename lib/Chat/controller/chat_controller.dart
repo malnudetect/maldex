@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:malnudetect/Auth/auth_controller.dart';
 import 'package:malnudetect/Chat/repositories/chat_repository.dart';
 import 'package:malnudetect/models/email_contact.dart';
+import 'package:malnudetect/models/group.dart';
 import 'package:malnudetect/models/message.dart';
 import 'package:malnudetect/models/message_enum.dart';
 import 'package:malnudetect/models/message_reply_provider.dart';
@@ -29,9 +30,9 @@ class ChatController {
     return chatRepository.getChatContacts();
   }
 
-  // Stream<List<Group>> chatGroups() {
-  //   return chatRepository.getChatGroups();
-  // }
+  Stream<List<Group>> chatGroups() {
+    return chatRepository.getChatGroups();
+  }
 
   Stream<List<Message>> chatStream(String recieverUserId) {
     return chatRepository.getChatStream(recieverUserId);

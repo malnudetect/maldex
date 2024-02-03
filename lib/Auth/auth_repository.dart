@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:malnudetect/models/common_firebase_storage_repository.dart';
+import 'package:malnudetect/utils/common_firebase_storage_repository.dart';
 import 'package:malnudetect/models/user.dart';
 
 final authRepositoryProvider = Provider(
@@ -121,13 +121,13 @@ class AuthRepository {
   //   }
   // }
 
-  // Stream<UserModel> userData(String userId) {
-  //   return firestore.collection('users').doc(userId).snapshots().map(
-  //         (event) => UserModel.fromMap(
-  //           event.data()!,
-  //         ),
-  //       );
-  // }
+  Stream<UserModel> userData(String userId) {
+    return firestore.collection('users').doc(userId).snapshots().map(
+          (event) => UserModel.fromMap(
+            event.data()!,
+          ),
+        );
+  }
 
   void setUserState(bool isOnline) async {
     await firestore.collection('users').doc(auth.currentUser!.uid).update({

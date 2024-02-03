@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:malnudetect/ChatBot/chatbot_screen.dart';
 import 'package:malnudetect/constants/global_variables.dart';
-import 'package:malnudetect/screens/contacts_list_screen.dart';
+import 'package:malnudetect/group/screens/create_group_screen.dart';
+import 'package:malnudetect/screens/contacts_list.dart';
 
 class ChatSectionScreen extends ConsumerStatefulWidget {
   const ChatSectionScreen({super.key});
@@ -28,6 +29,21 @@ class _ChatSectionScreenState extends ConsumerState<ChatSectionScreen>
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, CreateGroupScreen.routeName);
+              },
+              icon: const Icon(
+                Icons.add,
+                color: Colors.red,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.more_vert),
+            ),
+          ],
           backgroundColor: GlobalVariables.primaryColor,
           title: Text(
             "Chat Section",
@@ -59,7 +75,8 @@ class _ChatSectionScreenState extends ConsumerState<ChatSectionScreen>
         body: TabBarView(
           controller: tabBarController,
           children: const [
-            ContactsListScreen(),
+            // ContactsListScreen(),
+            ContactsList(),
             ChatBotScreen(),
           ],
         ),

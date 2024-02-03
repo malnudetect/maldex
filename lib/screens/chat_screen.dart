@@ -26,7 +26,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
         centerTitle: true,
         title: Text("${widget.receiver["username"]}"),
         leading: Container(
-          margin: EdgeInsets.only(left: 20),
+          margin: const EdgeInsets.only(left: 20),
           child: CircleAvatar(
             minRadius: 30,
             backgroundImage: NetworkImage("${widget.receiver["photoUrl"]}"),
@@ -38,13 +38,6 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     const Text("You are currently chatting with "),
-            //     Text("${widget.receiver["username"]}"),
-            //   ],
-            // ),
             Expanded(
               child: ChatList(
                 recieverUserId: widget.receiver["uid"],
