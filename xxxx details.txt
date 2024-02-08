@@ -4,3 +4,23 @@ password: malnudetect##2001
 
 
 
+I have faced the same problem when using a virtual environment in Windows,
+ so the easiest to solve this problem is in the terminal typing with "python -m uvicorn main:app --reload" after already activate that environment with activate xxx.
+
+
+
+
+
+
+
+
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ deploying the model instructions
+ - connect to anaconda's base environment
+ - cd to the api folder in the project directory
+ - run the uvicorn using "python -m uvicorn main:app --reload"
+ - go the site path and   /docs
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -121,7 +122,10 @@ class _DetectionScreenState extends State<DetectionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 96, 100, 203),
         title: Text(
@@ -161,6 +165,7 @@ class _DetectionScreenState extends State<DetectionScreen> {
         ),
       ),
       body: ListView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         children: [
           (imageSelect)
               ? Container(
@@ -203,66 +208,61 @@ class _DetectionScreenState extends State<DetectionScreen> {
               ],
             ),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: (imageSelect)
-                  ? _results.map((result) {
-                      return Card(
-                        elevation: 20,
-                        child: Container(
-                          margin: const EdgeInsets.all(10),
-                          child: Text(
-                            // "${result.label}: ${result.confidence.toStringAsFixed(1)}%",
-                            "${result["label"]}: ${(result["confidence"] * 100).toStringAsFixed(1)}%",
-                            style: TextStyle(
-                              color: result["label"] == "Healthy"
-                                  ? Colors.green
-                                  : Colors.red,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+          Column(
+            children: (imageSelect)
+                ? _results.map((result) {
+                    return Card(
+                      elevation: 20,
+                      child: Container(
+                        margin: const EdgeInsets.all(10),
+                        child: Text(
+                          // "${result.label}: ${result.confidence.toStringAsFixed(1)}%",
+                          "${result["label"]}: ${(result["confidence"] * 100).toStringAsFixed(1)}%",
+                          style: TextStyle(
+                            color: result["label"] == "Healthy"
+                                ? Colors.green
+                                : Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      );
-                    }).toList()
-                  : [],
-            ),
+                      ),
+                    );
+                  }).toList()
+                : [],
           ),
           const SizedBox(
             height: 30,
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: imageSelect
-                  ? _results.map((result) {
-                      return Container(
-                        child: result["label"] == "Malnourished"
-                            ? Column(
-                                children: [
-                                  const Text("Solutions"),
-                                  Container(
-                                    height: 100,
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 30),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                      color: Colors.black,
-                                      width: 2.0,
-                                    )),
-                                  ),
-                                  const SizedBox(height: 40),
-                                  Text(
-                                      "Input Child Details for further analysis",
-                                      style: GoogleFonts.risque(
-                                          color: Colors.teal)),
-                                  const NumericalSection()
-                                ],
-                              )
-                            : const SizedBox(),
-                      );
-                    }).toList()
-                  : [],
-            ),
+          Column(
+            children: imageSelect
+                ? _results.map((result) {
+                    return Container(
+                      child: result["label"] == "Malnourished"
+                          ? Column(
+                              children: [
+                                const Text("Solutions"),
+                                Container(
+                                  height: 100,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 30),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  )),
+                                ),
+                                const SizedBox(height: 40),
+                                Text("Input Child Details for further analysis",
+                                    style:
+                                        GoogleFonts.risque(color: Colors.teal)),
+                                const NumericalSection()
+                              ],
+                            )
+                          : const SizedBox(),
+                    );
+                  }).toList()
+                : [],
           )
         ],
       ),

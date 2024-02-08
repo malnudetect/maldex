@@ -152,14 +152,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         key: _formKey,
                         child: Column(
                           children: [
-                            // const Logo(),
-                            // Image(
-                            //   image: const AssetImage(
-                            //     "assets/logo/logo.png",
-                            //   ),
-                            //   // height: MediaQuery.of(context).size.height * 0.2,
-                            //   width: MediaQuery.of(context).size.width * 0.5,
-                            // ),
                             const Space(),
                             Stack(
                               children: [
@@ -245,7 +237,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     )),
                               ],
                             ),
-
                             const Space(),
                             StatefulBuilder(
                               builder: (context, setState) {
