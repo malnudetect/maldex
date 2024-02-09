@@ -43,7 +43,7 @@ class _NumericalSectionState extends State<NumericalSection> {
   }
 
   String prediction = "No detection yet";
-
+  FocusNode focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

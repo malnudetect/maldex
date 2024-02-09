@@ -122,8 +122,6 @@ class _DetectionScreenState extends State<DetectionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -164,106 +162,113 @@ class _DetectionScreenState extends State<DetectionScreen> {
           ],
         ),
       ),
-      body: ListView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      body: Column(
         children: [
-          (imageSelect)
-              ? Container(
-                  margin: const EdgeInsets.all(10),
-                  child: Image.file(_image),
-                )
-              : Container(
-                  margin: const EdgeInsets.all(10),
-                  child: const Opacity(
-                    opacity: 0.8,
-                    child: Center(
-                      child: Text("No image selected"),
-                    ),
-                  ),
-                ),
-          Padding(
-            padding: const EdgeInsets.only(right: 40),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          Expanded(
+            child: ListView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: _showImageOptions,
-                      child: Card(
-                        elevation: 9,
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(34),
+                (imageSelect)
+                    ? Container(
+                        margin: const EdgeInsets.all(10),
+                        child: Image.file(_image),
+                      )
+                    : Container(
+                        margin: const EdgeInsets.all(10),
+                        child: const Opacity(
+                          opacity: 0.8,
+                          child: Center(
+                            child: Text("No image selected"),
                           ),
-                          child: const Icon(Icons.image),
                         ),
                       ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 40),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: _showImageOptions,
+                            child: Card(
+                              elevation: 9,
+                              child: Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(34),
+                                ),
+                                child: const Icon(Icons.image),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
+                Column(
+                  children: (imageSelect)
+                      ? _results.map((result) {
+                          return Card(
+                            elevation: 20,
+                            child: Container(
+                              margin: const EdgeInsets.all(10),
+                              child: Text(
+                                // "${result.label}: ${result.confidence.toStringAsFixed(1)}%",
+                                "${result["label"]}: ${(result["confidence"] * 100).toStringAsFixed(1)}%",
+                                style: TextStyle(
+                                  color: result["label"] == "Healthy"
+                                      ? Colors.green
+                                      : Colors.red,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList()
+                      : [],
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Column(
+                  children: imageSelect
+                      ? _results.map((result) {
+                          return Container(
+                            child: result["label"] == "Malnourished"
+                                ? Column(
+                                    children: [
+                                      const Text("Solutions"),
+                                      Container(
+                                        height: 100,
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 30),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                          color: Colors.black,
+                                          width: 2.0,
+                                        )),
+                                      ),
+                                      const SizedBox(height: 40),
+                                      Text(
+                                          "Input Child Details for further analysis",
+                                          style: GoogleFonts.risque(
+                                              color: Colors.teal)),
+                                      const NumericalSection()
+                                    ],
+                                  )
+                                : const SizedBox(),
+                          );
+                        }).toList()
+                      : [],
+                )
               ],
             ),
           ),
-          Column(
-            children: (imageSelect)
-                ? _results.map((result) {
-                    return Card(
-                      elevation: 20,
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        child: Text(
-                          // "${result.label}: ${result.confidence.toStringAsFixed(1)}%",
-                          "${result["label"]}: ${(result["confidence"] * 100).toStringAsFixed(1)}%",
-                          style: TextStyle(
-                            color: result["label"] == "Healthy"
-                                ? Colors.green
-                                : Colors.red,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList()
-                : [],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Column(
-            children: imageSelect
-                ? _results.map((result) {
-                    return Container(
-                      child: result["label"] == "Malnourished"
-                          ? Column(
-                              children: [
-                                const Text("Solutions"),
-                                Container(
-                                  height: 100,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                    color: Colors.black,
-                                    width: 2.0,
-                                  )),
-                                ),
-                                const SizedBox(height: 40),
-                                Text("Input Child Details for further analysis",
-                                    style:
-                                        GoogleFonts.risque(color: Colors.teal)),
-                                const NumericalSection()
-                              ],
-                            )
-                          : const SizedBox(),
-                    );
-                  }).toList()
-                : [],
-          )
         ],
       ),
       // floatingActionButton: FloatingActionButton(
