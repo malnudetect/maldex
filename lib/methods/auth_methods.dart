@@ -6,7 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:malnudetect/constants/global_variables.dart';
 import 'package:malnudetect/methods/storage_methods.dart';
 import 'package:malnudetect/models/user.dart' as model;
-import 'package:malnudetect/models/user.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;

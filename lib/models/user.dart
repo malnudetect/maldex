@@ -18,7 +18,7 @@ class UserModel {
     required this.photoUrl,
   });
 
-  static fromSnap(DocumentSnapshot snap) async {
+  factory UserModel.fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return UserModel(
       email: snapshot["email"],
