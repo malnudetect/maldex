@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:malnudetect/constants/global_variables.dart';
+import 'package:malnudetect/screens/solution_section_screen.dart';
 
 class NumericalSection extends StatefulWidget {
   const NumericalSection({super.key});
@@ -30,14 +32,24 @@ class _NumericalSectionState extends State<NumericalSection> {
   }
 
   String requesturl = "";
+  bool isloading = false;
+  bool detectionAchieved = false;
 
   fetchprediction(String url) async {
+    setState(() {
+      isloading = true;
+    });
+
     http.Response response = await http.get(
       Uri.parse(url),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
+
+    setState(() {
+      isloading = false;
+    });
 
     return jsonDecode(response.body);
   }
@@ -72,7 +84,7 @@ class _NumericalSectionState extends State<NumericalSection> {
                 },
                 controller: sexController,
                 decoration: const InputDecoration(
-                  hintText: "Sex  (male/female)",
+                  hintText: "Sex  (Male/Female)",
                   border: InputBorder.none,
                 ),
               ),
@@ -153,11 +165,16 @@ class _NumericalSectionState extends State<NumericalSection> {
               onPressed: () async {
                 setState(() {
                   requesturl =
-                      "http://197.239.10.96:8000/Predict?Sex=${sexController.text}&Age=${ageController.text}&Height=${heightController.text}&Weight=${weightController.text}";
+                      "http://10.0.2.2:8000/Predict?Sex=${sexController.text}&Age=${ageController.text}&Height=${heightController.text}&Weight=${weightController.text}";
+                  //pc ip ==  192.168.43.3
+                  //pc ip ==  102.85.9.80  .........
                   // 197.239.10.96
                   //172.20.10.2
                   //192.168.137.111
                   //127.0.0.1
+                  //tecno phone ip  ==  10.219.182.45
+                  //tecno phone ip  ==  10.169.36.212
+                  //emulator phone ip  ==  10.0.2.2
                   // "http://10.0.2.2:8000/Predict?Sex=${sexController.text}&Age=${ageController.text}&Height=${heightController.text}&Weight=${weightController.text}";
                 });
                 var fetcheddata = await fetchprediction(requesturl);
@@ -166,6 +183,7 @@ class _NumericalSectionState extends State<NumericalSection> {
 
                 setState(() {
                   prediction = loadeddata[0];
+                  detectionAchieved = true;
                 });
               },
               child: const Text("Make Detection"),
@@ -173,11 +191,63 @@ class _NumericalSectionState extends State<NumericalSection> {
             const SizedBox(
               height: 30,
             ),
-            Text(prediction.toUpperCase(),
-                style: GoogleFonts.bubblegumSans(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ))
+            !detectionAchieved
+                ? Text("Input Child Details for further Detection",
+                    style: GoogleFonts.bubblegumSans(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ))
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("DETECTED AS",
+                          style: GoogleFonts.bubblegumSans(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          )),
+                      const SizedBox(width: 5),
+                      Text(prediction.toUpperCase().split(" ").last,
+                          style: GoogleFonts.bubblegumSans(
+                            fontSize: 20,
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ],
+                  ),
+            detectionAchieved
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Solutions",
+                          style: GoogleFonts.bubblegumSans(
+                              fontSize: 25, color: Colors.blue),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: 250,
+                          margin: const EdgeInsets.symmetric(horizontal: 30),
+                          decoration: BoxDecoration(
+                              color: GlobalVariables.primaryColor,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2.0,
+                              )),
+                          child: SingleChildScrollView(
+                            child: SolutionsSection(
+                                prediction:
+                                    prediction.toUpperCase().split(" ").last),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                //SolutionsSection()
+                : const SizedBox(),
           ],
         ),
       ),

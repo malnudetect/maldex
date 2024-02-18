@@ -44,7 +44,7 @@ class _ChatSectionScreenState extends ConsumerState<ChatSectionScreen>
               icon: const Icon(Icons.more_vert),
             ),
           ],
-          backgroundColor: GlobalVariables.primaryColor,
+          backgroundColor: Colors.deepPurple,
           title: Text(
             "Chat Section",
             style: GoogleFonts.bubblegumSans(

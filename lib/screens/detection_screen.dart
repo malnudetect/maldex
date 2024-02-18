@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:malnudetect/constants/global_variables.dart';
 import 'package:malnudetect/methods/auth_methods.dart';
 import 'package:malnudetect/screens/numerical_data_section.dart';
+import 'package:malnudetect/screens/solution_section_screen.dart';
 import 'package:tflite/tflite.dart';
 
 class Result {
@@ -67,6 +68,7 @@ class _DetectionScreenState extends State<DetectionScreen> {
     );
     File image = File(pickedFile!.path);
     imageClassification(image);
+
     Navigator.pop(context);
   }
 
@@ -103,7 +105,7 @@ class _DetectionScreenState extends State<DetectionScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                _getImageFromCamera;
+                _getImageFromCamera();
               },
               child: const Text('CAMERA'),
             ),
@@ -242,23 +244,18 @@ class _DetectionScreenState extends State<DetectionScreen> {
                             child: result["label"] == "Malnourished"
                                 ? Column(
                                     children: [
-                                      const Text("Solutions"),
-                                      Container(
-                                        height: 100,
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 30),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                          color: Colors.black,
-                                          width: 2.0,
-                                        )),
-                                      ),
                                       const SizedBox(height: 40),
                                       Text(
                                           "Input Child Details for further analysis",
                                           style: GoogleFonts.risque(
-                                              color: Colors.teal)),
-                                      const NumericalSection()
+                                            color: Colors.teal,
+                                            fontSize: 19,
+                                            fontWeight: FontWeight.bold,
+                                          )),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      const NumericalSection(),
                                     ],
                                   )
                                 : const SizedBox(),

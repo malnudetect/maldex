@@ -38,7 +38,7 @@ class ContactsListScreen extends ConsumerWidget {
                 textStyle: GoogleFonts.bubblegumSans(fontSize: 20)),
             onPressed: () =>
                 Navigator.pushNamed(context, UserSearchScreen.routeName),
-            child: const Text("Search users to Chat with"),
+            child: const Text("Search Users to Chat with"),
           ),
         ),
         Expanded(
