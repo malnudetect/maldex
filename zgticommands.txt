@@ -1,0 +1,20 @@
+pushing your code to the already existing conde on the branch  =====> git clone https://github.com/malnudetect/maldex.git
+
+
+creating new branch for only your code 
+
+git init 
+git remote add origin https://github.com/malnudetect/maldex.git
+git fetch origin
+git checkout -b new-branch-name
+git add .
+git commit -m "new commit"
+git push origin main2
+
+
+
+//----------------------------------------------------------------------
+git fetch origin                  # Fetch all updates from the remote
+git branch -r                     # List all remote branches
+git checkout main                 # Switch to your local branch (e.g., main)
+git pull origin feature-branch    # Pull changes from the specific branch (e.g., feature-branch)
