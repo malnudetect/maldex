@@ -1,0 +1,10 @@
+check if sign up is working fine
+
+
+
+
+
+maybe remove the chats section 
+
+
+delete most of the models stuff and save the outdated project to d/maldex before delecting some files 

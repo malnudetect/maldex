@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "134141366024",
+    "project_id": "malnudetect",
+    "storage_bucket": "malnudetect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134141366024:android:40b370af9dc0a1cdad66bd",
+        "android_client_info": {
+          "package_name": "com.example.malnudetect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj4h6HzTwETjtzq7tZgAGcPvcqdlcoaSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
