@@ -2,7 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:malnudetect/models/message_enum.dart';
-import 'package:malnudetect/widgets/video_player_item.dart';
+// import 'package:malnudetect/widgets/video_player_item.dart';
 
 class DisplayTextImageGIF extends StatelessWidget {
   final String message;
@@ -49,16 +49,12 @@ class DisplayTextImageGIF extends StatelessWidget {
                   ),
                 );
               })
-            : type == MessageEnum.video
-                ? VideoPlayerItem(
-                    videoUrl: message,
+            : type == MessageEnum.gif
+                ? CachedNetworkImage(
+                    imageUrl: message,
                   )
-                : type == MessageEnum.gif
-                    ? CachedNetworkImage(
-                        imageUrl: message,
-                      )
-                    : CachedNetworkImage(
-                        imageUrl: message,
-                      );
+                : CachedNetworkImage(
+                    imageUrl: message,
+                  );
   }
 }
