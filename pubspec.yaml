@@ -97,7 +97,6 @@ flutter:
     - assets/detection/yolov8_67mAP_completed_float16.tflite
     - assets/detection/labels.txt
     - assets/models/efficientnet_labels.txt
-    - assets/models/efficientnet_model.tflite
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

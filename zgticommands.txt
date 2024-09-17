@@ -18,3 +18,12 @@ git fetch origin                  # Fetch all updates from the remote
 git branch -r                     # List all remote branches
 git checkout main                 # Switch to your local branch (e.g., main)
 git pull origin feature-branch    # Pull changes from the specific branch (e.g., feature-branch)
+
+
+//------------------------------------ commands to commit a large file above 100mbs
+git lfs install
+git lfs track "assets/detection/yolov8_67mAP_completed_float16.tflite"
+git add .gitattributes assets/detection/yolov8_67mAP_completed_float16.tflite
+git commit -m "Track large file with Git LFS"
+git push origin main2
+
