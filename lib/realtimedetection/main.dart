@@ -115,48 +115,48 @@ class _RealTimeDetectionScreenState extends State<RealTimeDetectionScreen> {
         ),
         centerTitle: true,
       ),
-      floatingActionButton: SpeedDial(
-        //margin bottom
-        icon: Icons.menu, //icon on Floating action button
-        activeIcon: Icons.close, //icon when menu is expanded on button
-        backgroundColor: Colors.black12, //background color of button
-        foregroundColor: Colors.white, //font color, icon color in button
-        activeBackgroundColor: const Color.fromARGB(
-            255, 96, 100, 203), //background color when menu is expanded
-        activeForegroundColor: Colors.white,
-        visible: true,
-        closeManually: false,
-        curve: Curves.bounceIn,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.5,
-        buttonSize: const Size(56.0, 56.0),
-        children: [
-          SpeedDialChild(
-            child: const Icon(Icons.video_call),
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-            label: 'Yolo on Frame',
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () {
-              setState(() {
-                option = Options.frame;
-              });
-            },
-          ),
-          SpeedDialChild(
-            child: const Icon(Icons.camera),
-            backgroundColor: Colors.blue,
-            foregroundColor: Colors.white,
-            label: 'YoloV8 on Image',
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () {
-              setState(() {
-                option = Options.imagev8;
-              });
-            },
-          ),
-        ],
-      ),
+      // floatingActionButton: SpeedDial(
+      //   //margin bottom
+      //   icon: Icons.menu, //icon on Floating action button
+      //   activeIcon: Icons.close, //icon when menu is expanded on button
+      //   backgroundColor: Colors.black12, //background color of button
+      //   foregroundColor: Colors.white, //font color, icon color in button
+      //   activeBackgroundColor: const Color.fromARGB(
+      //       255, 96, 100, 203), //background color when menu is expanded
+      //   activeForegroundColor: Colors.white,
+      //   visible: true,
+      //   closeManually: false,
+      //   curve: Curves.bounceIn,
+      //   overlayColor: Colors.black,
+      //   overlayOpacity: 0.5,
+      //   buttonSize: const Size(56.0, 56.0),
+      //   children: [
+      //     SpeedDialChild(
+      //       child: const Icon(Icons.video_call),
+      //       backgroundColor: Colors.red,
+      //       foregroundColor: Colors.white,
+      //       label: 'Yolo on Frame',
+      //       labelStyle: const TextStyle(fontSize: 18.0),
+      //       onTap: () {
+      //         setState(() {
+      //           option = Options.frame;
+      //         });
+      //       },
+      //     ),
+      //     SpeedDialChild(
+      //       child: const Icon(Icons.camera),
+      //       backgroundColor: Colors.blue,
+      //       foregroundColor: Colors.white,
+      //       label: 'YoloV8 on Image',
+      //       labelStyle: const TextStyle(fontSize: 18.0),
+      //       onTap: () {
+      //         setState(() {
+      //           option = Options.imagev8;
+      //         });
+      //       },
+      //     ),
+      //   ],
+      // ),
     );
   }
 
