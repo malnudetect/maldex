@@ -23,12 +23,12 @@ use tf29 environment
 
 generating key commands
 
+keytool -genkey -v -keystore C:/Users/IVAN/Desktop/projects/malnudetect/android/app/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
 
-
-C:/Users/IVAN/Desktop/projects/malnudetect/android/app/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+flutter build appbundle --release
 
 Running Gradle task 'bundleRelease'...                            160.2s
 √ Built build\app\outputs\bundle\release\app-release.aab (380.7MB).
